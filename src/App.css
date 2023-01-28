@@ -1,0 +1,23 @@
+.flex{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.row{
+  flex-direction: row;
+}
+.column{
+  flex-direction: column;
+}
+.justify-around{
+  justify-content: space-around;
+}
+.radius{
+  border-radius: 15px 50px;
+  border: solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
