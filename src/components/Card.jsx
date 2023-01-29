@@ -3,18 +3,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import activityAction from './redux/actions/activityAction'
 import { useEffect } from 'react'
 
-export default function Card(props) {
-    const activity = useSelector(store => store.activityReducer)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(activityAction.getActivity())
-    }, [])
-    
+export default function Card({id,name, description, made}) {
+    const activity = useSelector(store => store.activityReducer.response)
+    const dispatch = useDispatch() 
+    let archi = (e)=>{
+        dispatch(activityAction.made(e.target.value))
+    }
+    let toDo = (e)=>{
+        dispatch(activityAction.toDo(e.target.value))
+    }
+    let dele = (e)=>{
+        dispatch(activityAction.delet(e.target.value))
+    }
     return (
         <div class="radius">
-            <h3>{props.name}</h3>
-            <p>{props.description}</p>
-            {props.made ? (<button value={props.id}>To Do</button>) : (<button value={props.id} >Achieved</button>)}
+            <button onClick={dele} value={id}>X</button>
+            <h3>{name}</h3>
+            <p>{description}</p>
+            {made ? (<button value={id} onClick={toDo} >To Do</button>) : (<button value={id} onClick={archi} >Achieved</button>)}
         </div>
     )
 }
