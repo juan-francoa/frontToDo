@@ -10,25 +10,39 @@ export default function Home() {
     useEffect(() => {
         dispatch(activityAction.getActivity())
     }, [])
+
+    const creat = (e) => {
+        e.preventDefault()
+        const obj = {
+            name: e.target.form[0].value,
+            description: e.target.form[1].value
+        }
+        dispatch(activityAction.create(obj))
+        e.target.form[0].value = ""
+        e.target.form[1].value = ""
+    }
+    const handlePadre = () => { 
+        console.log(activity)
+    }
     return (
-        <div>
-            <h1 className='flex justify-center'>Juanito To Do</h1>
-            <div className='flex row justify-around'>
-                <div>
+        <div className='body'>
+            <h1 className='flex justify-center title'>Juanito To Do</h1>
+            <div className='flex row justify-around content1'>
+                <div className='espace'>
                     <h3>To Do List</h3>
                     <form className='radius'>
 
-                        <p>Name: <input type="text" name="usuario" /></p>
+                        <label>Name: <input type="text" name="name" /></label>
 
-                        <p>Description: <input type="password" name="pass"/></p>
+                        <label>Description: <input type="text" name="description" /></label>
 
-                        <p><input type="submit" value="Create" /></p>
+                        <input className='button' onClick={creat} type="submit" value="Create" />
                     </form>
-                    {activity.map(e => e.made ? ("") : (<Card name={e.name} description={e.description} id={e._id} made={e.made} />))}
+                    {activity.map(e => e.made ? ("") : (<Card handlePadre={handlePadre} name={e.name} description={e.description} id={e._id} made={e.made} />))}
                 </div>
-                <div>
+                <div className='espace'>
                     <h3>Achieved</h3>
-                    {activity.map(e => e.made ? (<Card name={e.name} description={e.description} id={e._id} made={e.made} />) : (""))}
+                    {activity.map(e => e.made ? (<Card handlePadre={handlePadre} name={e.name} description={e.description} id={e._id} made={e.made} />) : (""))}
                 </div>
             </div>
         </div>

@@ -20,4 +20,25 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  min-width: 150px;
+  min-height: 150px;
+  background-color: bisque;
+  padding: 20px;
+  margin: 20px;
+}
+button, .button{
+  background-color: black;
+  border-radius: 20px;
+  color: aliceblue;
+}
+.body{
+  background-color:beige;
+}
+.content1{
+  margin-left: solid black;
+}
+.title{
+  background-color: black;
+  color: white;
+  padding: 20px;
 }
